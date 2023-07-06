@@ -11,6 +11,5 @@ case ENV['XML']
   when 'nokogiri' then require 'nokogiri'
 end
 
-require 'recurly'
-include Recurly
-
+require 'recurly_v2'
+include RecurlyV2

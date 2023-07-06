@@ -11,7 +11,7 @@ Link: <https://api.recurly.com/v2/accounts/bd8d90fb-9581-4b44-9e61-26eab86b0577/
     <nickname>Work</nickname>
     <first_name>Verena</first_name>
     <last_name>Example</last_name>
-    <company>Recurly Inc.</company>
+    <company>RecurlyV2 Inc.</company>
     <phone>555-555-5555</phone>
     <email>verena@example.com</email>
     <vat_number nil="nil"></vat_number>

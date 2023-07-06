@@ -9,7 +9,7 @@ Content-Type: application/xml; charset=utf-8
   <nickname>Work</nickname>
   <first_name>Verena</first_name>
   <last_name>Example</last_name>
-  <company>Recurly Inc.</company>
+  <company>RecurlyV2 Inc.</company>
   <phone>555-555-5555</phone>
   <email>verena@example.com</email>
   <vat_number nil="nil"></vat_number>
