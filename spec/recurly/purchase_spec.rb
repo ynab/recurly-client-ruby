@@ -47,6 +47,42 @@ describe Purchase do
       }
     )
   end
+  let(:purchase_with_net_terms_type) do
+    Purchase.new(
+      account: {account_code: 'account123'},
+      net_terms: 30,
+      net_terms_type: 'eom',
+      transaction_type: 'moto',
+      adjustments: adjustments,
+      subscriptions: [
+        {
+          plan_code: plan_code,
+          subscription_add_ons: [
+            add_on_code: 'add_on_code',
+            unit_amount_in_cents: 200
+          ]
+        }
+      ],
+      shipping_address_id: 1234,
+      shipping_fees: [
+        shipping_method_code: 'fedex_ground',
+        shipping_amount_in_cents: 999
+      ],
+      shipping_address:  {
+        nickname: "Work",
+        first_name: "Verena",
+        last_name: "Example",
+        company: "Recurly Inc.",
+        phone: "555-555-5555",
+        email: "verena@example.com",
+        address1: "400 Alabama St.",
+        city: "San Francisco",
+        state: "CA",
+        zip: "94110",
+        country: "US"
+      }
+    )
+  end
 
   describe 'Purchase.invoice!' do
     it 'should return an invoice_collection when valid' do
@@ -78,6 +114,16 @@ describe Purchase do
       charge_invoice.line_items.first.total_in_cents.must_equal 7000
 
       charge_invoice.transactions.first.amount_in_cents.must_equal 7000
+    end
+
+    it 'should return an invoice_collection with net_terms_type when valid' do
+      stub_api_request(:post, 'purchases', 'purchases/invoice-with-eom-net-terms-201')
+      collection = Purchase.invoice!(purchase_with_net_terms_type)
+      charge_invoice = collection.charge_invoice
+
+      charge_invoice.total_in_cents.must_equal 7000
+      charge_invoice.net_terms.must_equal 30
+      charge_invoice.net_terms_type.must_equal 'eom'
     end
 
     it 'should raise an Invalid error when data is invalid' do
@@ -127,6 +173,14 @@ describe Purchase do
       stub_api_request(:post, 'purchases/preview', 'purchases/preview-201')
       preview_collection = Purchase.preview!(purchase)
       preview_collection.charge_invoice.must_be_instance_of Invoice
+    end
+
+    it 'should return a preview invoice with net_terms_type when valid' do
+      stub_api_request(:post, 'purchases/preview', 'purchases/preview-201-with-eom-net-terms')
+      preview_collection = Purchase.preview!(purchase_with_net_terms_type)
+      preview_collection.charge_invoice.must_be_instance_of Invoice
+      preview_collection.charge_invoice.net_terms.must_equal 30
+      preview_collection.charge_invoice.net_terms_type.must_equal 'eom'
     end
 
     it 'the first ramp interval unit amount is reflected in these expected attributes' do

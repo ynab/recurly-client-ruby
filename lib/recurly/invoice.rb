@@ -96,6 +96,7 @@ module Recurly
       customer_notes
       address
       net_terms
+      net_terms_type
       collection_method
       tax_types
       refund_tax_date

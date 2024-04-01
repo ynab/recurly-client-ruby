@@ -57,6 +57,13 @@ describe Subscription do
       subscription.po_number.must_equal('1000')
     end
 
+    it "check deserialize for net_terms_type" do
+      subscription = Subscription.from_xml get_raw_xml("subscriptions/show-200-with-eom-net-terms.xml")
+      subscription.must_be_instance_of Subscription
+      subscription.net_terms.must_equal(30)
+      subscription.net_terms_type.must_equal('eom')
+    end
+
     it 'can deserialize tax information' do
       stub_api_request :get, 'subscriptions/abc1234', 'subscriptions/show-200-taxed'
       subscription = Subscription.find 'abc1234'
@@ -433,6 +440,21 @@ describe Subscription do
       subscription.cost_in_cents.must_equal subscription.unit_amount_in_cents * 5
       subscription.invoice_collection.must_be_instance_of InvoiceCollection
       subscription.invoice_collection.charge_invoice.must_be_instance_of Invoice
+    end
+
+    it 'previews subscription with net_terms_type' do
+      stub_api_request :get, 'subscriptions/abcdef1234567890', 'subscriptions/show-200-noinvoice'
+      stub_api_request :post, 'subscriptions/abcdef1234567890/preview', 'subscriptions/preview-200-change-with-eom-net-terms'
+
+      subscription = Subscription.find 'abcdef1234567890'
+      subscription.net_terms = 60
+      subscription.net_terms_type = 'eom'
+      subscription.preview
+
+      subscription.invoice_collection.must_be_instance_of InvoiceCollection
+      subscription.invoice_collection.charge_invoice.must_be_instance_of Invoice
+      subscription.invoice_collection.charge_invoice.net_terms.must_equal 60
+      subscription.invoice_collection.charge_invoice.net_terms_type.must_equal 'eom'
     end
   end
 
