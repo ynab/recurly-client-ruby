@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.48.1](https://github.com/recurly/recurly-client-ruby/tree/4.48.1) (2024-04-02)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/4.48.0...4.48.1)
+
+
+**Merged Pull Requests**
+
+- fix: Allow Resource to be compare to other object [#890](https://github.com/recurly/recurly-client-ruby/pull/890) ([malbert](https://github.com/malbert))
+
+
+
 ## [4.48.0](https://github.com/recurly/recurly-client-ruby/tree/4.48.0) (2024-03-19)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/4.47.0...4.48.0)
