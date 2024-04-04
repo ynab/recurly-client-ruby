@@ -70,6 +70,7 @@ module Recurly
       total_billing_cycles
       remaining_billing_cycles
       net_terms
+      net_terms_type
       collection_method
       po_number
       tax_in_cents

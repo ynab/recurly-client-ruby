@@ -136,6 +136,7 @@ module Recurly
       collection_method
       po_number
       net_terms
+      net_terms_type
       coupon_codes
       terms_and_conditions
       customer_notes
