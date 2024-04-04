@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.19.13](https://github.com/recurly/recurly-client-ruby/tree/2.19.13) (2024-04-04)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.12...2.19.13)
+
+
+**Merged Pull Requests**
+
+- Add net_terms_type to Invoices, Purchases, and Subscriptions [#897](https://github.com/recurly/recurly-client-ruby/pull/897) ([flaviomuller](https://github.com/flaviomuller))
+
+
+
 ## [2.19.12](https://github.com/recurly/recurly-client-ruby/tree/2.19.12) (2024-03-19)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.11...2.19.12)
