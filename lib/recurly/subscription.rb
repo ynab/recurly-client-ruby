@@ -109,6 +109,7 @@ module Recurly
       gateway_code
       transaction_type
       action_result
+      proration_settings
     )
     alias to_param uuid
 
