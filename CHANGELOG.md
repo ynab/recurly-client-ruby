@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.19.14](https://github.com/recurly/recurly-client-ruby/tree/2.19.14) (2024-05-08)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.13...2.19.14)
+
+
+**Merged Pull Requests**
+
+- Add subscription change proflex options [#898](https://github.com/recurly/recurly-client-ruby/pull/898) ([Patrick-Duvall](https://github.com/Patrick-Duvall))
+
+
+
 ## [2.19.13](https://github.com/recurly/recurly-client-ruby/tree/2.19.13) (2024-04-04)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.12...2.19.13)
