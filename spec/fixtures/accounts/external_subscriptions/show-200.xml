@@ -20,6 +20,8 @@ Content-Type: application/xml; charset=utf-8
         <trial_ends_at nil="nil"></trial_ends_at>
         <canceled_at nil="nil"></canceled_at>
         <in_grace_period>false</in_grace_period>
+        <imported>false</imported>
+        <test>false</test>
         <created_at type="datetime">2022-11-04T20:33:29Z</created_at>
         <updated_at type="datetime">2022-11-04T20:33:29Z</updated_at>
     </external_subscription>
