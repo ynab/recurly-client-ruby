@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.20.0](https://github.com/recurly/recurly-client-ruby/tree/2.20.0) (2024-07-03)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.14...2.20.0)
+
+
+**Merged Pull Requests**
+
+- GET external_subscription by external_id [#907](https://github.com/recurly/recurly-client-ruby/pull/907) ([paulorbpinho-fullstacklabs](https://github.com/paulorbpinho-fullstacklabs))
+- add taxable address sources to business entity and adjustment [#906](https://github.com/recurly/recurly-client-ruby/pull/906) ([amandamfielding](https://github.com/amandamfielding))
+
+
+
 ## [2.19.14](https://github.com/recurly/recurly-client-ruby/tree/2.19.14) (2024-05-08)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.13...2.19.14)
