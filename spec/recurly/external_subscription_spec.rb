@@ -24,7 +24,9 @@ describe ExternalSubscription do
       trial_started_at: "2022-11-07 17:08:18",
       trial_ends_at: "2022-11-14 17:08:18",
       canceled_at: "2022-11-15 17:08:18",
-      in_grace_period: false
+      in_grace_period: false,
+      imported: false,
+      test: false
     )
   }
 
@@ -64,10 +66,12 @@ describe ExternalSubscription do
 <reference_code>reference_code 1</reference_code>\
 <updated_at>2019-08-24T14:15:22Z</updated_at>\
 </external_product_reference>\
+<imported>false</imported>\
 <in_grace_period>false</in_grace_period>\
 <last_purchased>2022-11-07 17:08:18</last_purchased>\
 <quantity>1</quantity>\
 <state>active</state>\
+<test>false</test>\
 <trial_ends_at>2022-11-14 17:08:18</trial_ends_at>\
 <trial_started_at>2022-11-07 17:08:18</trial_started_at>\
 <updated_at>2022-11-07 17:08:18</updated_at>\

@@ -30,6 +30,8 @@ module Recurly
       trial_ends_at
       canceled_at
       in_grace_period
+      imported
+      test
     )
 
     # We do not expose PUT or POST in the v2 API.
@@ -46,6 +48,10 @@ module Recurly
       ExternalPaymentPhase.from_response API.get("#{path}/external_payment_phases/#{external_payment_phase_uuid}")
     rescue Recurly::API::UnprocessableEntity => e
       raise Invalid, e.message
+    end
+
+    def self.find_by_external_id(external_id)
+      self.find("external-id-#{external_id}")
     end
   end
 end
