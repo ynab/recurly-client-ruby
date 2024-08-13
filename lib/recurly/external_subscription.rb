@@ -15,6 +15,7 @@ module Recurly
 
     define_attribute_methods %w(
       account
+      uuid
       external_id
       external_product_reference
       quantity
@@ -52,6 +53,10 @@ module Recurly
 
     def self.find_by_external_id(external_id)
       self.find("external-id-#{external_id}")
+    end
+
+    def self.find_by_uuid(uuid)
+      self.find("uuid-#{uuid}")
     end
   end
 end

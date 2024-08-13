@@ -11,6 +11,7 @@ describe ExternalSubscription do
         created_at: "2019-08-24T14:15:22Z",
         updated_at: "2019-08-24T14:15:22Z"
       ),
+      uuid: "72bb9966bb5dc3767461ce4368a6b366",
       quantity: 1,
       activated_at: "2022-11-07 17:08:18",
       created_at: "2022-11-07 17:08:18",
@@ -75,6 +76,7 @@ describe ExternalSubscription do
 <trial_ends_at>2022-11-14 17:08:18</trial_ends_at>\
 <trial_started_at>2022-11-07 17:08:18</trial_started_at>\
 <updated_at>2022-11-07 17:08:18</updated_at>\
+<uuid>72bb9966bb5dc3767461ce4368a6b366</uuid>\
 </external_subscription>
 XML
     end
