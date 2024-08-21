@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.20.1](https://github.com/recurly/recurly-client-ruby/tree/2.20.1) (2024-08-21)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.0...2.20.1)
+
+
+**Merged Pull Requests**
+
+- Added support for refunding invoices and line items [#909](https://github.com/recurly/recurly-client-ruby/pull/909) ([andcoca](https://github.com/andcoca))
+
+
+
 ## [2.20.0](https://github.com/recurly/recurly-client-ruby/tree/2.20.0) (2024-07-03)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.14...2.20.0)
