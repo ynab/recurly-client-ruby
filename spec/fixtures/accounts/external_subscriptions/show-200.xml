@@ -8,6 +8,7 @@ Content-Type: application/xml; charset=utf-8
         <external_invoices href="https://api.recurly.com/v2/external_subscriptions/sdam2lfeop3e/external_invoices"/>
         <external_payment_phases href="https://api.recurly.com/v2/external_subscriptions/sdam2lfeop3e/external_payment_phases"/>
         <external_id>1234abcd</external_id>
+        <uuid>72bb9966bb5dc3767461ce4368a6b366</uuid>
         <external_product_reference nil="nil"></external_product_reference>
         <last_purchased nil="nil"></last_purchased>
         <auto_renew type="boolean">false</auto_renew>
