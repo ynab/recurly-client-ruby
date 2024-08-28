@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.20.2](https://github.com/recurly/recurly-client-ruby/tree/2.20.2) (2024-08-28)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.1...2.20.2)
+
+
+**Merged Pull Requests**
+
+- Get external sub by uuid [#911](https://github.com/recurly/recurly-client-ruby/pull/911) ([amandamfielding](https://github.com/amandamfielding))
+
+
+
 ## [2.20.1](https://github.com/recurly/recurly-client-ruby/tree/2.20.1) (2024-08-21)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.0...2.20.1)
