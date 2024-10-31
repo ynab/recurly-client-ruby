@@ -135,6 +135,10 @@ describe Plan do
       plan.plan_code.must_equal('gold')
     end
 
+    it 'returns plan with vertex transaction type' do
+      plan.vertex_transaction_type.must_equal('lease')
+    end
+
     it 'returns plan with the custom fields' do
       plan.custom_fields[0].name.must_equal('color')
       plan.custom_fields[0].value.must_equal('Red')

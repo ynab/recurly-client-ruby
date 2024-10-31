@@ -43,6 +43,7 @@ module Recurly
       setup_fee_revenue_schedule_type
       tax_exempt
       tax_code
+      vertex_transaction_type
       trial_requires_billing_info
       auto_renew
       allow_any_item_on_subscriptions
