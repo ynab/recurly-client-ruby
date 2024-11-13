@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.20.3](https://github.com/recurly/recurly-client-ruby/tree/2.20.3) (2024-11-13)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.2...2.20.3)
+
+
+**Merged Pull Requests**
+
+- Add vertex_transaction_type to plans [#916](https://github.com/recurly/recurly-client-ruby/pull/916) ([faiberrec](https://github.com/faiberrec))
+
+
+
 ## [2.20.2](https://github.com/recurly/recurly-client-ruby/tree/2.20.2) (2024-08-28)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.1...2.20.2)
