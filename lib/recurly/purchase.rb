@@ -144,6 +144,7 @@ module Recurly
       shipping_address_id
       gateway_code
       transaction_type
+      vertex_transaction_type
       billing_info_uuid
     )
 

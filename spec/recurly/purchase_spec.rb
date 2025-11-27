@@ -13,6 +13,28 @@ describe Purchase do
       }
     ]
   }]}
+
+  describe 'vertex_transaction_type attribute' do
+    it 'should accept vertex_transaction_type as a purchase attribute' do
+      purchase = Purchase.new(
+        account: {account_code: 'account123'},
+        vertex_transaction_type: 'rental',
+        adjustments: adjustments
+      )
+      purchase.vertex_transaction_type.must_equal 'rental'
+    end
+
+    it 'should include vertex_transaction_type in XML output' do
+      purchase = Purchase.new(
+        account: {account_code: 'account123'},
+        vertex_transaction_type: 'lease',
+        adjustments: adjustments
+      )
+      xml = purchase.to_xml
+      xml.must_include '<vertex_transaction_type>lease</vertex_transaction_type>'
+    end
+  end
+
   let(:purchase) do
     Purchase.new(
       account: {account_code: 'account123'},
