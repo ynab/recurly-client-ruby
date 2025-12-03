@@ -33,6 +33,81 @@ describe Purchase do
       xml = purchase.to_xml
       xml.must_include '<vertex_transaction_type>lease</vertex_transaction_type>'
     end
+
+    it 'should accept adjustments with vertex_transaction_type within a purchase request' do
+      purchase = Purchase.new(
+        account: {account_code: 'account123'},
+        adjustments: [
+          {
+            product_code: 'product_code',
+            unit_amount_in_cents: 1_000,
+            quantity: 1,
+            vertex_transaction_type: 'lease'
+          }
+        ]
+      )
+      purchase.adjustments.first.vertex_transaction_type.must_equal 'lease'
+    end
+
+    it 'should include adjustment vertex_transaction_type in XML output' do
+      purchase = Purchase.new(
+        account: {account_code: 'account123'},
+        adjustments: [
+          {
+            product_code: 'product_code',
+            unit_amount_in_cents: 1_000,
+            quantity: 1,
+            vertex_transaction_type: 'rental'
+          }
+        ]
+      )
+      xml = purchase.to_xml
+      xml.must_include '<vertex_transaction_type>rental</vertex_transaction_type>'
+    end
+
+    it 'should allow both purchase-level and adjustment-level vertex_transaction_type' do
+      purchase = Purchase.new(
+        account: {account_code: 'account123'},
+        vertex_transaction_type: 'sale',
+        adjustments: [
+          {
+            product_code: 'product_code_1',
+            unit_amount_in_cents: 1_000,
+            quantity: 1,
+            vertex_transaction_type: 'lease'
+          },
+          {
+            product_code: 'product_code_2',
+            unit_amount_in_cents: 2_000,
+            quantity: 1,
+            vertex_transaction_type: 'rental'
+          }
+        ]
+      )
+      purchase.vertex_transaction_type.must_equal 'sale'
+      purchase.adjustments[0].vertex_transaction_type.must_equal 'lease'
+      purchase.adjustments[1].vertex_transaction_type.must_equal 'rental'
+    end
+
+    it 'should include both purchase and adjustment vertex_transaction_type in XML output' do
+      purchase = Purchase.new(
+        account: {account_code: 'account123'},
+        vertex_transaction_type: 'sale',
+        adjustments: [
+          {
+            product_code: 'product_code',
+            unit_amount_in_cents: 1_000,
+            quantity: 1,
+            vertex_transaction_type: 'lease'
+          }
+        ]
+      )
+      xml = purchase.to_xml
+      # Purchase-level vertex_transaction_type
+      xml.must_match(/<purchase>.*<vertex_transaction_type>sale<\/vertex_transaction_type>.*<\/purchase>/m)
+      # Adjustment-level vertex_transaction_type
+      xml.must_match(/<adjustment>.*<vertex_transaction_type>lease<\/vertex_transaction_type>.*<\/adjustment>/m)
+    end
   end
 
   let(:purchase) do
