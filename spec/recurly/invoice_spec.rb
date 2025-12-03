@@ -141,6 +141,22 @@ describe Invoice do
     end
   end
 
+  describe 'vertex_transaction_type attribute' do
+    it 'should accept vertex_transaction_type in Invoice.to_xml' do
+      xml = Invoice.to_xml(vertex_transaction_type: 'rental')
+      xml.must_include '<vertex_transaction_type>rental</vertex_transaction_type>'
+    end
+
+    it 'should include vertex_transaction_type in invoice creation params' do
+      stub_api_request :get, 'accounts/abcdef1234567890', 'accounts/show-200'
+      stub_api_request :post, 'accounts/abcdef1234567890/invoices', 'invoices/create-201'
+
+      account = Account.find('abcdef1234567890')
+      invoice_collection = account.invoice!(vertex_transaction_type: 'lease')
+      invoice_collection.must_be_instance_of InvoiceCollection
+    end
+  end
+
   describe "line item refund" do
     before do
       stub_api_request :get, 'invoices/refundable-invoice', 'invoices/show-200-refundable'

@@ -123,6 +123,7 @@ module Recurly
       refundable_total_in_cents
       used_tax_service
       business_entity_id
+      vertex_transaction_type
     )
     alias to_param invoice_number_with_prefix
 

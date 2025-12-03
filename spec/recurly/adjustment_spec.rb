@@ -144,6 +144,29 @@ describe Adjustment do
     end
   end
 
+  describe 'vertex_transaction_type attribute' do
+    it 'should accept vertex_transaction_type as an adjustment attribute' do
+      adjustment = Adjustment.new(
+        unit_amount_in_cents: 1000,
+        currency: 'USD',
+        quantity: 1,
+        vertex_transaction_type: 'rental'
+      )
+      adjustment.vertex_transaction_type.must_equal 'rental'
+    end
+
+    it 'should include vertex_transaction_type in XML output' do
+      adjustment = Adjustment.new(
+        unit_amount_in_cents: 1000,
+        currency: 'USD',
+        quantity: 1,
+        vertex_transaction_type: 'lease'
+      )
+      xml = adjustment.to_xml
+      xml.must_include '<vertex_transaction_type>lease</vertex_transaction_type>'
+    end
+  end
+
   describe '#bill_for_account' do
     it 'calls the account endpoint to fetch bill_for_account' do
       stub_api_request :get, 'adjustments/abcdef1234567890', 'adjustments/show-200'
