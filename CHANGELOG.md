@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.20.4](https://github.com/recurly/recurly-client-ruby/tree/2.20.4) (2025-12-10)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.3...2.20.4)
+
+
+**Merged Pull Requests**
+
+- Accept vertex_transaction_type fur purchase, adjustments and invoice [#943](https://github.com/recurly/recurly-client-ruby/pull/943) ([sgilrodriguez](https://github.com/sgilrodriguez))
+
+
+
 ## [2.20.3](https://github.com/recurly/recurly-client-ruby/tree/2.20.3) (2024-11-13)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.2...2.20.3)
