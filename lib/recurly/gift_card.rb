@@ -36,6 +36,7 @@ module Recurly
       gifter_account_code
       recipient_account_code
       invoice_number
+      tax_service_opt_out
     ) + RevRec::PRODUCT_ATTRIBUTES
     alias to_param id
 

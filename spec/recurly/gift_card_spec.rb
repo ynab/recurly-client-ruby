@@ -200,5 +200,17 @@ describe GiftCard do
         actual_xml.must_equal expected_xml
       end
     end
+
+    describe "with tax_service_opt_out" do
+      let(:gift_card) {
+        Recurly::GiftCard.new(
+          tax_service_opt_out: true
+        )
+      }
+
+      it "should render a gift card payload with tax_service_opt_out" do
+        gift_card.to_xml.must_include "<tax_service_opt_out>true</tax_service_opt_out>"
+      end
+    end
   end
 end
