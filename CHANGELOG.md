@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.20.5](https://github.com/recurly/recurly-client-ruby/tree/2.20.5) (2025-12-17)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.4...2.20.5)
+
+
+**Merged Pull Requests**
+
+- Add tax_service_opt_out attribute to GiftCard model and corresponding tests [#944](https://github.com/recurly/recurly-client-ruby/pull/944) ([d14z-tech](https://github.com/d14z-tech))
+
+
+
 ## [2.20.4](https://github.com/recurly/recurly-client-ruby/tree/2.20.4) (2025-12-10)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.3...2.20.4)
