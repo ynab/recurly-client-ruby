@@ -13,3 +13,5 @@
 .rspec_status
 *.gem
 coverage
+.socket-scans/
+.socket.facts.json
