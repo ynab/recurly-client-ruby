@@ -93,7 +93,7 @@ XML
         stub_api_request :get, 'items/plastic_gloves', 'items/show-200'
         stub_request(:put, "https://api.recurly.com/v2/items/plastic_gloves").
         with(:body => "<item><liability_gl_account_id>a8hkyaw9nm</liability_gl_account_id><name>Sleek Plastic Gloves</name><performance_obligation_id>6</performance_obligation_id><revenue_gl_account_id>aksdfu48</revenue_gl_account_id></item>",
-          :headers => Recurly::API.headers).to_return(:status => 200, :body => "", :headers => {})
+          :headers => RecurlyV2::API.headers).to_return(:status => 200, :body => "", :headers => {})
         item.update_attributes({ name: 'Sleek Plastic Gloves', revenue_gl_account_id: 'aksdfu48', 
                                  liability_gl_account_id: 'a8hkyaw9nm', performance_obligation_id: '6'})
       end

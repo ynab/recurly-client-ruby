@@ -1,4 +1,4 @@
-module Recurly
+module RecurlyV2
   module RevRec
     POB_ATTRIBUTE = %i(performance_obligation_id).freeze
     POB_NATIVE_ATTRIBUTE = %i(performance_obligation_identifier).freeze

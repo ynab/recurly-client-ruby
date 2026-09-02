@@ -203,7 +203,7 @@ describe GiftCard do
 
     describe "with tax_service_opt_out" do
       let(:gift_card) {
-        Recurly::GiftCard.new(
+        RecurlyV2::GiftCard.new(
           tax_service_opt_out: true
         )
       }

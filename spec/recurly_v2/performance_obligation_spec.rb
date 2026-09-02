@@ -3,12 +3,12 @@ require 'spec_helper'
 describe PerformanceObligation do
   let(:performance_obligation) {
     stub_api_request(:get, "performance_obligations/6", "performance_obligations/show-200")
-    Recurly::PerformanceObligation.find '6'
+    RecurlyV2::PerformanceObligation.find '6'
   }
 
   let(:performance_obligations) {
     stub_api_request(:get, "performance_obligations", "performance_obligations/index-200")
-    Recurly::PerformanceObligation.all
+    RecurlyV2::PerformanceObligation.all
   }
 
   describe "#find" do

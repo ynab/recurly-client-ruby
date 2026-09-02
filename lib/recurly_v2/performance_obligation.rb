@@ -1,4 +1,4 @@
-module Recurly
+module RecurlyV2
   class PerformanceObligation < Resource
 
     define_attribute_methods %w(

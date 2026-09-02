@@ -1,4 +1,4 @@
-module Recurly
+module RecurlyV2
   class ExternalPaymentPhase < Resource
 
     # @return [ExternalSubscription]

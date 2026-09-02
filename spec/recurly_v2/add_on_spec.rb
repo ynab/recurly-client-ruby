@@ -139,7 +139,7 @@ XML
     it "must create a new add-on" do
       stub_request(:post, "https://api.recurly.com/v2/plans/gold/add_ons").
         with(:body => "<add_on><add_on_code>pink_sweaters</add_on_code><add_on_type>usage</add_on_type><liability_gl_account_id>uf0jwj5zhclg</liability_gl_account_id><name>Pink Sweaters</name><optional>false</optional><performance_obligation_id>1</performance_obligation_id><revenue_gl_account_id>uf0jwincednb</revenue_gl_account_id><revenue_schedule_type>evenly</revenue_schedule_type><unit_amount_in_cents><USD>200</USD></unit_amount_in_cents><usage_type>price</usage_type></add_on>",
-             :headers => Recurly::API.headers).to_return(:status => 200, :body => "", :headers => {})
+             :headers => RecurlyV2::API.headers).to_return(:status => 200, :body => "", :headers => {})
 
       plan = Plan.find 'gold'
       add_on = plan.add_ons.create(
@@ -165,7 +165,7 @@ XML
       add_on = plan.add_ons.find 'marketing_email'
       stub_request(:put, "https://api.recurly.com/v2/plans/gold/add_ons/marketing_email").
       with(:body => "<add_on><liability_gl_account_id>a8hkyaw9nm</liability_gl_account_id><name>Updated Emails</name><revenue_gl_account_id>aksdfu48</revenue_gl_account_id></add_on>",
-        :headers => Recurly::API.headers).to_return(:status => 200, :body => "", :headers => {})
+        :headers => RecurlyV2::API.headers).to_return(:status => 200, :body => "", :headers => {})
       add_on.update_attributes({ name: 'Updated Emails', revenue_gl_account_id: 'aksdfu48',
                                  liability_gl_account_id: 'a8hkyaw9nm', performance_obligation_id: '6'})
     end

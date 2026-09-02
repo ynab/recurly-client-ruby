@@ -291,7 +291,7 @@ describe Invoice do
       it "creates a refund invoice for the line items refunded using percentage" do
         refund_invoice = @invoice.refund_percentage 50
         refund_invoice.must_be_instance_of Invoice
-        refund_invoice.original_invoices.must_be_instance_of Recurly::Resource::Pager
+        refund_invoice.original_invoices.must_be_instance_of RecurlyV2::Resource::Pager
         refund_invoice.amount_remaining_in_cents.must_equal 100
       end
     end

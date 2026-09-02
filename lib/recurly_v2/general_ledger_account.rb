@@ -1,4 +1,4 @@
-module Recurly
+module RecurlyV2
   class GeneralLedgerAccount < Resource
     belongs_to :site
 

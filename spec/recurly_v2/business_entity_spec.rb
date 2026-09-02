@@ -67,7 +67,7 @@ describe BusinessEntity do
   describe ".find" do
     let(:business_entity) {
       stub_api_request(:get, "business_entities/sbup2j0fx800", "business_entities/show-200")
-      Recurly::BusinessEntity.find 'sbup2j0fx800'
+      RecurlyV2::BusinessEntity.find 'sbup2j0fx800'
     }
 
     it "returns a business entity" do
@@ -84,7 +84,7 @@ describe BusinessEntity do
   describe ".index" do
     let(:business_entities) {
       stub_api_request(:get, "business_entities", "business_entities/index-200")
-      Recurly::BusinessEntity.all
+      RecurlyV2::BusinessEntity.all
     }
 
     it "returns all business entities" do

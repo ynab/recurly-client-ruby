@@ -40,14 +40,14 @@ module RecurlyV2
     private_class_method(*%w(create! create))
 
     def get_external_payment_phases
-      Pager.new(Recurly::ExternalPaymentPhase, uri: "#{path}/external_payment_phases", parent: self)
-    rescue Recurly::API::UnprocessableEntity => e
+      Pager.new(RecurlyV2::ExternalPaymentPhase, uri: "#{path}/external_payment_phases", parent: self)
+    rescue RecurlyV2::API::UnprocessableEntity => e
       raise Invalid, e.message
     end
 
     def get_external_payment_phase(external_payment_phase_uuid)
       ExternalPaymentPhase.from_response API.get("#{path}/external_payment_phases/#{external_payment_phase_uuid}")
-    rescue Recurly::API::UnprocessableEntity => e
+    rescue RecurlyV2::API::UnprocessableEntity => e
       raise Invalid, e.message
     end
 

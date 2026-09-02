@@ -27,7 +27,7 @@ module RecurlyV2
   require 'recurly_v2/external_invoice'
   require 'recurly_v2/external_product'
   require 'recurly_v2/external_product_reference'
-  require 'recurly/external_payment_phase'
+  require 'recurly_v2/external_payment_phase'
   require 'recurly_v2/external_subscription'
   require 'recurly_v2/helper'
   require 'recurly_v2/invoice'
@@ -62,8 +62,8 @@ module RecurlyV2
   require 'recurly_v2/currency_percentage_tier'
   require 'recurly_v2/sub_add_on_percentage_tier'
   require 'recurly_v2/custom_field_definition'
-  require 'recurly/general_ledger_account'
-  require 'recurly/performance_obligation'
+  require 'recurly_v2/general_ledger_account'
+  require 'recurly_v2/performance_obligation'
 
   @subdomain = nil
 

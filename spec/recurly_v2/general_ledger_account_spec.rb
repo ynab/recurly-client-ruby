@@ -3,12 +3,12 @@ require 'spec_helper'
 describe GeneralLedgerAccount do
   let(:general_ledger_account) {
     stub_api_request(:get, "general_ledger_accounts/u90r5deeaxix", "general_ledger_accounts/show-200")
-    Recurly::GeneralLedgerAccount.find 'u90r5deeaxix'
+    RecurlyV2::GeneralLedgerAccount.find 'u90r5deeaxix'
   }
 
   let(:general_ledger_accounts) {
     stub_api_request(:get, "general_ledger_accounts", "general_ledger_accounts/index-200")
-    Recurly::GeneralLedgerAccount.all
+    RecurlyV2::GeneralLedgerAccount.all
   }
 
   describe "#find" do
@@ -34,7 +34,7 @@ describe GeneralLedgerAccount do
     describe "when account_type=revenue passed" do
       let(:general_ledger_accounts) {
         stub_api_request(:get, "general_ledger_accounts?account_type=revenue", "general_ledger_accounts/index-200-revenue")
-        Recurly::GeneralLedgerAccount.all(account_type: 'revenue')
+        RecurlyV2::GeneralLedgerAccount.all(account_type: 'revenue')
       }
 
       it "returns a list of general ledger accounts" do
@@ -45,7 +45,7 @@ describe GeneralLedgerAccount do
     describe "when account_type=liability passed" do
       let(:general_ledger_accounts) {
         stub_api_request(:get, "general_ledger_accounts?account_type=liability", "general_ledger_accounts/index-200-liability")
-        Recurly::GeneralLedgerAccount.all(account_type: 'liability')
+        RecurlyV2::GeneralLedgerAccount.all(account_type: 'liability')
       }
 
       it "returns a list of general ledger accounts" do
@@ -68,7 +68,7 @@ describe GeneralLedgerAccount do
       stub_api_request :get, 'general_ledger_accounts/u90r5deeaxix', 'general_ledger_accounts/show-200'
       stub_request(:put, "https://api.recurly.com/v2/general_ledger_accounts/u90r5deeaxix").
       with(:body => "<general_ledger_account><description>new_string</description></general_ledger_account>",
-        :headers => Recurly::API.headers).to_return(:status => 200, :body => "", :headers => {})
+        :headers => RecurlyV2::API.headers).to_return(:status => 200, :body => "", :headers => {})
       general_ledger_account.update_attributes({ description: 'new_string' })
     end
   end
