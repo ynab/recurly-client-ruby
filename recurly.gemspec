@@ -29,7 +29,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'logger'
   # rake 11 requires ostruct, gone from Ruby 4.0's default gems.
   s.add_development_dependency 'rake', '>= 11.3'
-  s.add_development_dependency 'minitest', '~> 5.8', '>= 5.8.0'
+  # Ruby 4.0 bundles minitest 6, which dropped both the global must_* expectations
+  # and Minitest::Mock; these two gems supply them for the whole matrix.
+  s.add_development_dependency 'minitest', '>= 5.8'
+  s.add_development_dependency 'minitest-global_expectations'
+  s.add_development_dependency 'minitest-mock'
   s.add_development_dependency 'addressable', '~> 2.4', '>= 2.4.0'
   # webmock 2.x requires base64, gone from Ruby 3.4's default gems.
   s.add_development_dependency 'webmock', '>= 2.3.2'

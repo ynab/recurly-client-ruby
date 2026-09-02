@@ -129,7 +129,7 @@ XML
 
       it "is accessible as an attribute" do
         billing_info_without_cc_bin_country = BillingInfo.find 'without-cc-bin'
-        billing_info_without_cc_bin_country.cc_bin_country.must_equal nil
+        billing_info_without_cc_bin_country.cc_bin_country.must_be_nil
 
         billing_info_with_cc_bin_country = BillingInfo.find 'with-cc-bin'
         billing_info_with_cc_bin_country.cc_bin_country.must_equal 'US'

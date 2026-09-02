@@ -347,7 +347,7 @@ describe Subscription do
         stub_api_request :get, 'subscriptions/abcdef1234567890', 'subscriptions/show-200-noinvoice'
 
         subscription = Subscription.find 'abcdef1234567890'
-        subscription.invoice.must_equal nil
+        subscription.invoice.must_be_nil
       end
     end
   end
@@ -405,12 +405,12 @@ describe Subscription do
 
     it "should be able to pause and resume a subscription" do
       sub = RecurlyV2::Subscription.find('abcdef1234567890')
-      sub.paused_at.must_equal nil
+      sub.paused_at.must_be_nil
       sub.pause(1).must_equal true
       sub.paused_at.must_be_instance_of DateTime
       sub.remaining_pause_cycles.must_equal 1
       sub.resume.must_equal true
-      sub.remaining_pause_cycles.must_equal nil
+      sub.remaining_pause_cycles.must_be_nil
     end
   end
 
