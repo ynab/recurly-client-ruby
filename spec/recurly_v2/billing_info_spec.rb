@@ -229,7 +229,7 @@ XML
       billing_info = BillingInfo.find 'abcdef1234567890'
       billing_info_from_dump = Marshal.load(Marshal.dump(billing_info))
 
-      billing_info.instance_variables.must_equal billing_info_from_dump.instance_variables
+      billing_info.instance_variables.sort.must_equal billing_info_from_dump.instance_variables.sort
     end
 
     it 'must return the same values' do

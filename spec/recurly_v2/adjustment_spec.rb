@@ -117,7 +117,7 @@ describe Adjustment do
         adjustment = Adjustment.find 'abcdef1234567890'
         adjustment_from_dump = Marshal.load(Marshal.dump(adjustment))
 
-        adjustment.instance_variables.must_equal adjustment_from_dump.instance_variables
+        adjustment.instance_variables.sort.must_equal adjustment_from_dump.instance_variables.sort
       end
 
       it 'must return the same values' do

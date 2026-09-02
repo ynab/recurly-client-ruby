@@ -62,7 +62,7 @@ describe Transaction do
       transaction = Transaction.find 'abcdef1234567890'
       transaction_from_dump = Marshal.load(Marshal.dump(transaction))
 
-      transaction.instance_variables.must_equal transaction_from_dump.instance_variables
+      transaction.instance_variables.sort.must_equal transaction_from_dump.instance_variables.sort
     end
 
     it 'must return the same values' do
