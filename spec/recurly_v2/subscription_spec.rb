@@ -127,7 +127,7 @@ describe Subscription do
           expect(sub.ramp_intervals[0].unit_amount_in_cents).must_equal('1000')
 
           expect(sub.ramp_intervals[1].starting_on).must_equal('2022-10-23 16:16:34.000000')
-          expect(sub.ramp_intervals[1].ending_on).must_equal(nil)
+          expect(sub.ramp_intervals[1].ending_on).must_be_nil
           expect(sub.ramp_intervals[1].starting_billing_cycle).must_equal('2')
           expect(sub.ramp_intervals[1].unit_amount_in_cents).must_equal('2000')
         end

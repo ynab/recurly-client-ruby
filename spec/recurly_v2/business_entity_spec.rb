@@ -57,8 +57,8 @@ describe BusinessEntity do
       expect(business_entity.code).must_equal('samplecode')
       expect(business_entity.id).must_equal('sokvpa93ztmm')
       expect(business_entity.subscriber_location_countries).must_equal(['US', 'AU'])
-      expect(business_entity.default_revenue_gl_account_id).must_equal(revenue_gla.id)
-      expect(business_entity.default_liability_gl_account_id).must_equal(liablity_gla.id)
+      expect(business_entity.default_revenue_gl_account_id).must_be_nil
+      expect(business_entity.default_liability_gl_account_id).must_be_nil
       expect(business_entity.created_at).must_equal('2023-05-23T19:02:40Z')
       expect(business_entity.updated_at).must_equal('2023-06-23T19:02:40Z')
     end
