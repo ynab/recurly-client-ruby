@@ -19,10 +19,10 @@ module RecurlyV2
         root.each_element(xpath) { |el| yield el }
       end
 
-      def each element = root
+      def each element = root, &block
         element.each_element do |el|
-          yield el
-          each el, &Proc.new
+          block.call el
+          each el, &block
         end
       end
 
