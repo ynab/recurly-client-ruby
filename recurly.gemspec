@@ -25,10 +25,14 @@ Gem::Specification.new do |s|
     s.add_development_dependency 'nokogiri', '~> 1.8', '>= 1.8.2'
   end
 
-  s.add_development_dependency 'rake', '~> 11.3'
+  # logger left the default gems in Ruby 4.0; spec_helper requires it.
+  s.add_development_dependency 'logger'
+  # rake 11 requires ostruct, gone from Ruby 4.0's default gems.
+  s.add_development_dependency 'rake', '>= 11.3'
   s.add_development_dependency 'minitest', '~> 5.8', '>= 5.8.0'
   s.add_development_dependency 'addressable', '~> 2.4', '>= 2.4.0'
-  s.add_development_dependency 'webmock', '~> 2.3', '>= 2.3.2'
+  # webmock 2.x requires base64, gone from Ruby 3.4's default gems.
+  s.add_development_dependency 'webmock', '>= 2.3.2'
   s.add_development_dependency 'simplecov', '~> 0'
 
   if RUBY_PLATFORM != 'java' && !ENV['CI']
