@@ -141,6 +141,22 @@ describe Invoice do
     end
   end
 
+  describe 'vertex_transaction_type attribute' do
+    it 'should accept vertex_transaction_type in Invoice.to_xml' do
+      xml = Invoice.to_xml(vertex_transaction_type: 'rental')
+      xml.must_include '<vertex_transaction_type>rental</vertex_transaction_type>'
+    end
+
+    it 'should include vertex_transaction_type in invoice creation params' do
+      stub_api_request :get, 'accounts/abcdef1234567890', 'accounts/show-200'
+      stub_api_request :post, 'accounts/abcdef1234567890/invoices', 'invoices/create-201'
+
+      account = Account.find('abcdef1234567890')
+      invoice_collection = account.invoice!(vertex_transaction_type: 'lease')
+      invoice_collection.must_be_instance_of InvoiceCollection
+    end
+  end
+
   describe "line item refund" do
     before do
       stub_api_request :get, 'invoices/refundable-invoice', 'invoices/show-200-refundable'
@@ -162,6 +178,22 @@ describe Invoice do
           adjustment.quantity_remaining.must_equal 1
         end
       end
+
+      it "creates a refund invoice for the line items refunded with amount in cents" do
+        line_items = @invoice.line_items.values.map do |adjustment|
+          { adjustment: adjustment, amount_in_cents: 100, prorate: false }
+        end
+        refund_invoice = @invoice.refund line_items
+        refund_invoice.must_be_instance_of Invoice
+      end
+
+      it "creates a refund invoice for the line items refunded with percentage" do
+        line_items = @invoice.line_items.values.map do |adjustment|
+          { adjustment: adjustment, percentage: 77, prorate: false }
+        end
+        refund_invoice = @invoice.refund line_items
+        refund_invoice.must_be_instance_of Invoice
+      end
     end
 
     describe "#refund_to_xml" do
@@ -178,6 +210,38 @@ describe Invoice do
           '<invoice><refund_method>credit_first</refund_method><credit_customer_notes>Credit Notes</credit_customer_notes><external_refund>true</external_refund><payment_method>check</payment_method><description>Check no. 12345678</description><refunded_at>2018-12-01T00:00:00+00:00</refunded_at><amount_in_cents>17500</amount_in_cents><line_items><adjustment><uuid>charge1</uuid><quantity>1</quantity><prorate>false</prorate></adjustment></line_items></invoice>'
         )
       end
+
+      it "must serialize line_items with amount_in_cents" do
+        line_items = @invoice.line_items.values.map do |adjustment|
+          { adjustment: adjustment, amount_in_cents: 100, prorate: false }
+        end
+        options = {
+          credit_customer_notes: 'Credit Notes',
+          external_refund: true,
+          payment_method: 'check',
+          description: 'Check no. 12345678',
+          refunded_at: DateTime.new(2018, 12, 1, 0, 0, 0)
+        }
+        @invoice.send(:refund_line_items_to_xml, line_items, 'credit_first', options).must_equal(
+          '<invoice><refund_method>credit_first</refund_method><credit_customer_notes>Credit Notes</credit_customer_notes><external_refund>true</external_refund><payment_method>check</payment_method><description>Check no. 12345678</description><refunded_at>2018-12-01T00:00:00+00:00</refunded_at><line_items><adjustment><uuid>charge1</uuid><amount_in_cents>100</amount_in_cents><prorate>false</prorate></adjustment></line_items></invoice>'
+        )
+      end
+
+      it "must serialize line_items with percentage" do
+        line_items = @invoice.line_items.values.map do |adjustment|
+          { adjustment: adjustment, percentage: 77, prorate: false }
+        end
+        options = {
+          credit_customer_notes: 'Credit Notes',
+          external_refund: true,
+          payment_method: 'check',
+          description: 'Check no. 12345678',
+          refunded_at: DateTime.new(2018, 12, 1, 0, 0, 0)
+        }
+        @invoice.send(:refund_line_items_to_xml, line_items, 'credit_first', options).must_equal(
+          '<invoice><refund_method>credit_first</refund_method><credit_customer_notes>Credit Notes</credit_customer_notes><external_refund>true</external_refund><payment_method>check</payment_method><description>Check no. 12345678</description><refunded_at>2018-12-01T00:00:00+00:00</refunded_at><line_items><adjustment><uuid>charge1</uuid><percentage>77</percentage><prorate>false</prorate></adjustment></line_items></invoice>'
+        )
+      end
     end
   end
 
@@ -189,8 +253,8 @@ describe Invoice do
       @invoice = Invoice.find 'refundable-invoice'
     end
 
-    describe "#refund" do
-      it "creates a refund invoice for the line items refunded" do
+    describe "#refund_amount" do
+      it "creates a refund invoice for the line items refunded using amount" do
         refund_invoice = @invoice.refund_amount 1000
         refund_invoice.must_be_instance_of Invoice
         refund_invoice.original_invoices.must_be_instance_of RecurlyV2::Resource::Pager
@@ -198,7 +262,7 @@ describe Invoice do
       end
     end
 
-    describe "#refund_to_xml" do
+    describe "#refund_amount_to_xml" do
       it "must serialize amount_in_cents" do
         options = {
           credit_customer_notes: 'Credit Notes',
@@ -210,6 +274,39 @@ describe Invoice do
         }
         @invoice.send(:refund_amount_to_xml, 1000, 'credit_first', options).must_equal(
           '<invoice><refund_method>credit_first</refund_method><amount_in_cents>1000</amount_in_cents><credit_customer_notes>Credit Notes</credit_customer_notes><external_refund>true</external_refund><payment_method>check</payment_method><description>Check no. 12345678</description><refunded_at>2018-12-01T00:00:00+00:00</refunded_at><amount_in_cents>17500</amount_in_cents></invoice>'
+        )
+      end
+    end
+  end
+
+  describe "percentage refund" do
+    before do
+      stub_api_request :get, 'invoices/refundable-invoice', 'invoices/show-200-refundable'
+      stub_api_request :post, 'invoices/refundable-invoice/refund', 'invoices/refund_amount-201'
+
+      @invoice = Invoice.find 'refundable-invoice'
+    end
+
+    describe "#refund_percentage" do
+      it "creates a refund invoice for the line items refunded using percentage" do
+        refund_invoice = @invoice.refund_percentage 50
+        refund_invoice.must_be_instance_of Invoice
+        refund_invoice.original_invoices.must_be_instance_of Recurly::Resource::Pager
+        refund_invoice.amount_remaining_in_cents.must_equal 100
+      end
+    end
+
+    describe "#refund_percentage_to_xml" do
+      it "must serialize percentage" do
+        options = {
+          credit_customer_notes: 'Credit Notes',
+          external_refund: true,
+          payment_method: 'check',
+          description: 'Check no. 12345678',
+          refunded_at: DateTime.new(2018, 12, 1, 0, 0, 0)
+        }
+        @invoice.send(:refund_percentage_to_xml, 50, 'credit_first', options).must_equal(
+          '<invoice><refund_method>credit_first</refund_method><percentage>50</percentage><credit_customer_notes>Credit Notes</credit_customer_notes><external_refund>true</external_refund><payment_method>check</payment_method><description>Check no. 12345678</description><refunded_at>2018-12-01T00:00:00+00:00</refunded_at></invoice>'
         )
       end
     end

@@ -136,6 +136,7 @@ module RecurlyV2
       collection_method
       po_number
       net_terms
+      net_terms_type
       coupon_codes
       terms_and_conditions
       customer_notes
@@ -143,6 +144,7 @@ module RecurlyV2
       shipping_address_id
       gateway_code
       transaction_type
+      vertex_transaction_type
       billing_info_uuid
     )
 

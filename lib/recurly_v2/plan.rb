@@ -1,6 +1,7 @@
 module RecurlyV2
   # RecurlyV2 Documentation: https://dev.recurly.com/docs/list-plans
   class Plan < Resource
+
     # @return [Pager<AddOn>, []]
     has_many :add_ons
 
@@ -13,6 +14,7 @@ module RecurlyV2
     # @return [[CustomField], []]
     has_many :custom_fields, class_name: :CustomField, readonly: false
 
+    # Define attribute methods
     define_attribute_methods %w(
       plan_code
       name
@@ -41,6 +43,7 @@ module RecurlyV2
       setup_fee_revenue_schedule_type
       tax_exempt
       tax_code
+      vertex_transaction_type
       trial_requires_billing_info
       auto_renew
       allow_any_item_on_subscriptions
@@ -50,7 +53,7 @@ module RecurlyV2
       custom_fields
       created_at
       updated_at
-    )
+    ) + RevRec::PLAN_ATTRIBUTES
     alias to_param plan_code
   end
 end
