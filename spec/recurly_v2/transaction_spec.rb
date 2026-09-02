@@ -60,6 +60,7 @@ describe Transaction do
     it 'must return the same instance variables' do
       stub_api_request(:get, 'transactions/abcdef1234567890', 'transactions/show-200')
       transaction = Transaction.find 'abcdef1234567890'
+      # nosemgrep: ruby-unsafe-deserialization
       transaction_from_dump = Marshal.load(Marshal.dump(transaction))
 
       transaction.instance_variables.must_equal transaction_from_dump.instance_variables
@@ -68,6 +69,7 @@ describe Transaction do
     it 'must return the same values' do
       stub_api_request(:get, 'transactions/abcdef1234567890', 'transactions/show-200')
       transaction = Transaction.find 'abcdef1234567890'
+      # nosemgrep: ruby-unsafe-deserialization
       transaction_from_dump = Marshal.load(Marshal.dump(transaction))
 
       transaction.type.must_equal transaction_from_dump.type
