@@ -115,6 +115,7 @@ describe Adjustment do
         stub_api_request :get, 'adjustments/abcdef1234567890', 'adjustments/show-200-nosub'
 
         adjustment = Adjustment.find 'abcdef1234567890'
+        # nosemgrep: ruby-unsafe-deserialization
         adjustment_from_dump = Marshal.load(Marshal.dump(adjustment))
 
         adjustment.instance_variables.must_equal adjustment_from_dump.instance_variables
@@ -124,6 +125,7 @@ describe Adjustment do
         stub_api_request :get, 'adjustments/abcdef1234567890', 'adjustments/show-200-nosub'
 
         adjustment = Adjustment.find 'abcdef1234567890'
+        # nosemgrep: ruby-unsafe-deserialization
         adjustment_from_dump = Marshal.load(Marshal.dump(adjustment))
 
         adjustment.type.must_equal adjustment_from_dump.type
