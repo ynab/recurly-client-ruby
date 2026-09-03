@@ -25,10 +25,24 @@ Gem::Specification.new do |s|
     s.add_development_dependency 'nokogiri', '~> 1.8', '>= 1.8.2'
   end
 
-  s.add_development_dependency 'rake', '~> 11.3'
-  s.add_development_dependency 'minitest', '~> 5.8', '>= 5.8.0'
+  # logger left the default gems in Ruby 4.0; spec_helper requires it.
+  s.add_development_dependency 'logger'
+  # rake 11 requires ostruct, gone from Ruby 4.0's default gems.
+  s.add_development_dependency 'rake', '>= 11.3'
+  # Held to the 5.x line: minitest 6 needs Ruby >= 3.2, dropped the global must_*
+  # expectations this suite is written in, and moved Minitest::Mock to a gem that
+  # itself needs Ruby >= 3.1 — none of which the old half of the matrix can meet.
+  s.add_development_dependency 'minitest', '~> 5.8'
+  # Restores must_* if a bundled minitest 6 wins activation over the pin above.
+  s.add_development_dependency 'minitest-global_expectations'
+  # On Ruby 4.0 the bundled minitest 6 does win, and it no longer ships
+  # Minitest::Mock. Earlier Rubies keep getting Mock from minitest 5 itself.
+  if RUBY_VERSION >= '4.0'
+    s.add_development_dependency 'minitest-mock'
+  end
   s.add_development_dependency 'addressable', '~> 2.4', '>= 2.4.0'
-  s.add_development_dependency 'webmock', '~> 2.3', '>= 2.3.2'
+  # webmock 2.x requires base64, gone from Ruby 3.4's default gems.
+  s.add_development_dependency 'webmock', '>= 2.3.2'
   s.add_development_dependency 'simplecov', '~> 0'
 
   if RUBY_PLATFORM != 'java' && !ENV['CI']

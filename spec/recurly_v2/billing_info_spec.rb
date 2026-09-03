@@ -129,7 +129,7 @@ XML
 
       it "is accessible as an attribute" do
         billing_info_without_cc_bin_country = BillingInfo.find 'without-cc-bin'
-        billing_info_without_cc_bin_country.cc_bin_country.must_equal nil
+        billing_info_without_cc_bin_country.cc_bin_country.must_be_nil
 
         billing_info_with_cc_bin_country = BillingInfo.find 'with-cc-bin'
         billing_info_with_cc_bin_country.cc_bin_country.must_equal 'US'
@@ -230,7 +230,7 @@ XML
       # nosemgrep: ruby-unsafe-deserialization
       billing_info_from_dump = Marshal.load(Marshal.dump(billing_info))
 
-      billing_info.instance_variables.must_equal billing_info_from_dump.instance_variables
+      billing_info.instance_variables.sort.must_equal billing_info_from_dump.instance_variables.sort
     end
 
     it 'must return the same values' do

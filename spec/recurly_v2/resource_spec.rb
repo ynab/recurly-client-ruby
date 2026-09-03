@@ -569,12 +569,12 @@ XML
       it "must return nil if persisted with changes" do
         record.persist!
         record[:uuid] = 'changed'
-        record.valid?.must_equal nil
+        record.valid?.must_be_nil
       end
 
       it "must return nil if not persisted with changes and no errors" do
         record[:uuid] = 'changed'
-        record.valid?.must_equal nil
+        record.valid?.must_be_nil
       end
 
       it "must return false if it has errors" do

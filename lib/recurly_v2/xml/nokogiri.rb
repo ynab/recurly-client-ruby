@@ -18,10 +18,10 @@ module RecurlyV2
         elements.each { |el| yield el }
       end
 
-      def each element = root
+      def each element = root, &block
         element.elements.each do |el|
-          yield el
-          each el, &Proc.new
+          block.call el
+          each el, &block
         end
       end
 

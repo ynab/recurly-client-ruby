@@ -36,8 +36,8 @@ describe GiftCard do
       gift_card.balance_in_cents.must_equal 1_000
       gift_card.currency.must_equal "USD"
       gift_card.created_at.must_equal DateTime.parse("2016-07-28T00:01:48Z")
-      gift_card.canceled_at.must_equal nil
-      gift_card.delivered_at.must_equal nil
+      gift_card.canceled_at.must_be_nil
+      gift_card.delivered_at.must_be_nil
       gift_card.id.must_equal 2004005808969875135
       gift_card.product_code.must_equal "gift_card"
       gift_card.redeemed_at.must_equal DateTime.parse("2016-07-28T00:01:46Z")
@@ -54,7 +54,7 @@ describe GiftCard do
 
       delivery.must_be_instance_of RecurlyV2::Delivery
       delivery.method.must_equal "email"
-      delivery.deliver_at.must_equal nil
+      delivery.deliver_at.must_be_nil
       delivery.email_address.must_equal "john@example.com"
       delivery.first_name.must_equal "John"
       delivery.last_name.must_equal "Smith"
@@ -64,7 +64,7 @@ describe GiftCard do
       address = delivery.address
 
       address.address1.must_equal "400 Alabama St"
-      address.address2.must_equal nil
+      address.address2.must_be_nil
       address.city.must_equal "San Francisco"
       address.state.must_equal "CA"
       address.zip.must_equal "94110"

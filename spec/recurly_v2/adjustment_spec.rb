@@ -85,7 +85,7 @@ describe Adjustment do
       juris_detail.tax_in_cents[:USD].must_equal 115
       juris_detail.rate.must_equal 0.056
       juris_detail.description.must_equal 'Sales Tax'
-      juris_detail.jurisdiction_name.must_equal nil
+      juris_detail.jurisdiction_name.must_be_nil
     end
 
     it "must raise an exception when unavailable" do
@@ -107,7 +107,7 @@ describe Adjustment do
       stub_api_request :get, 'adjustments/abcdef1234567890', 'adjustments/show-200-nosub'
 
       adjustment = Adjustment.find 'abcdef1234567890'
-      adjustment.subscription.must_equal nil
+      adjustment.subscription.must_be_nil
     end
 
     describe '#marshal_dump' do
@@ -118,7 +118,7 @@ describe Adjustment do
         # nosemgrep: ruby-unsafe-deserialization
         adjustment_from_dump = Marshal.load(Marshal.dump(adjustment))
 
-        adjustment.instance_variables.must_equal adjustment_from_dump.instance_variables
+        adjustment.instance_variables.sort.must_equal adjustment_from_dump.instance_variables.sort
       end
 
       it 'must return the same values' do

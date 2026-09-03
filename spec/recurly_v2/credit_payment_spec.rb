@@ -35,7 +35,7 @@ describe CreditPayment do
 
       # nosemgrep: ruby-unsafe-deserialization
       credit_payment_from_dump = Marshal.load(Marshal.dump(credit_payment))
-      credit_payment.instance_variables.must_equal credit_payment_from_dump.instance_variables
+      credit_payment.instance_variables.sort.must_equal credit_payment_from_dump.instance_variables.sort
     end
 
     it 'must return the same values' do

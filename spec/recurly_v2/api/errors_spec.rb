@@ -8,12 +8,12 @@ describe RecurlyV2::API::ResponseError do
       let(:error) { RecurlyV2::API::ResponseError.new nil, nil }
 
       it "must return nil" do
-        error.send(:xml).must_equal nil
+        error.send(:xml).must_be_nil
       end
     end
 
     describe "when response assigned" do
-      let(:response) { MiniTest::Mock.new }
+      let(:response) { Minitest::Mock.new }
       let(:error) { RecurlyV2::API::ResponseError.new nil, response }
 
       describe "when xml already cached" do
@@ -28,7 +28,7 @@ describe RecurlyV2::API::ResponseError do
         before { response.expect :body, nil }
 
         it "must return nil" do
-          error.send(:xml).must_equal nil
+          error.send(:xml).must_be_nil
         end
       end
 
@@ -36,7 +36,7 @@ describe RecurlyV2::API::ResponseError do
         before { 2.times { response.expect :body, '' } }
 
         it "must return nil" do
-          error.send(:xml).must_equal nil
+          error.send(:xml).must_be_nil
         end
       end
 
@@ -54,7 +54,7 @@ describe RecurlyV2::API::ResponseError do
         before { 3.times { response.expect :body, html } }
 
         it "must return nil" do
-          error.send(:xml).must_equal nil
+          error.send(:xml).must_be_nil
         end
       end
     end

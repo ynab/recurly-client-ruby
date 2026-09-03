@@ -6,6 +6,8 @@ require 'logger'
 require 'cgi'
 require 'minitest/autorun'
 require 'minitest/spec'
+require 'minitest/global_expectations'
+require 'minitest/mock'
 require 'webmock'
 
 WebMock.enable!
