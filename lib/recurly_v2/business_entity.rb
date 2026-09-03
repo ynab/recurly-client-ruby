@@ -1,9 +1,10 @@
 module RecurlyV2
   class BusinessEntity < Resource
     belongs_to :site
+    belongs_to :default_revenue_gl_account, class_name: 'GeneralLedgerAccount'
+    belongs_to :default_liability_gl_account, class_name: 'GeneralLedgerAccount'
 
     has_many :invoices
-
     has_many :accounts
 
     define_attribute_methods %w(
@@ -12,9 +13,13 @@ module RecurlyV2
       name
       invoice_display_address
       tax_address
+      origin_tax_address_source
+      destination_tax_address_source
       subscriber_location_countries
       default_vat_number
       default_registration_number
+      default_revenue_gl_account_id
+      default_liability_gl_account_id
       created_at
       updated_at
     )

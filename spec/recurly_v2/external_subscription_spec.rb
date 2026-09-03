@@ -11,6 +11,7 @@ describe ExternalSubscription do
         created_at: "2019-08-24T14:15:22Z",
         updated_at: "2019-08-24T14:15:22Z"
       ),
+      uuid: "72bb9966bb5dc3767461ce4368a6b366",
       quantity: 1,
       activated_at: "2022-11-07 17:08:18",
       created_at: "2022-11-07 17:08:18",
@@ -20,7 +21,13 @@ describe ExternalSubscription do
       auto_renew: true,
       app_identifier: 'apple_play_store',
       external_id: 'abcd1234',
-      state: 'active'
+      state: 'active',
+      trial_started_at: "2022-11-07 17:08:18",
+      trial_ends_at: "2022-11-14 17:08:18",
+      canceled_at: "2022-11-15 17:08:18",
+      in_grace_period: false,
+      imported: false,
+      test: false
     )
   }
 
@@ -49,6 +56,7 @@ describe ExternalSubscription do
 <activated_at>2022-11-07 17:08:18</activated_at>\
 <app_identifier>apple_play_store</app_identifier>\
 <auto_renew>true</auto_renew>\
+<canceled_at>2022-11-15 17:08:18</canceled_at>\
 <created_at>2022-11-07 17:08:18</created_at>\
 <expires_at>2022-12-07 17:08:18</expires_at>\
 <external_id>abcd1234</external_id>\
@@ -59,10 +67,16 @@ describe ExternalSubscription do
 <reference_code>reference_code 1</reference_code>\
 <updated_at>2019-08-24T14:15:22Z</updated_at>\
 </external_product_reference>\
+<imported>false</imported>\
+<in_grace_period>false</in_grace_period>\
 <last_purchased>2022-11-07 17:08:18</last_purchased>\
 <quantity>1</quantity>\
 <state>active</state>\
+<test>false</test>\
+<trial_ends_at>2022-11-14 17:08:18</trial_ends_at>\
+<trial_started_at>2022-11-07 17:08:18</trial_started_at>\
 <updated_at>2022-11-07 17:08:18</updated_at>\
+<uuid>72bb9966bb5dc3767461ce4368a6b366</uuid>\
 </external_subscription>
 XML
     end

@@ -1,5 +1,169 @@
 # Changelog
 
+## [2.20.5](https://github.com/recurly/recurly-client-ruby/tree/2.20.5) (2025-12-17)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.4...2.20.5)
+
+
+**Merged Pull Requests**
+
+- Add tax_service_opt_out attribute to GiftCard model and corresponding tests [#944](https://github.com/recurly/recurly-client-ruby/pull/944) ([d14z-tech](https://github.com/d14z-tech))
+
+
+
+## [2.20.4](https://github.com/recurly/recurly-client-ruby/tree/2.20.4) (2025-12-10)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.3...2.20.4)
+
+
+**Merged Pull Requests**
+
+- Accept vertex_transaction_type fur purchase, adjustments and invoice [#943](https://github.com/recurly/recurly-client-ruby/pull/943) ([sgilrodriguez](https://github.com/sgilrodriguez))
+
+
+
+## [2.20.3](https://github.com/recurly/recurly-client-ruby/tree/2.20.3) (2024-11-13)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.2...2.20.3)
+
+
+**Merged Pull Requests**
+
+- Add vertex_transaction_type to plans [#916](https://github.com/recurly/recurly-client-ruby/pull/916) ([faiberrec](https://github.com/faiberrec))
+
+
+
+## [2.20.2](https://github.com/recurly/recurly-client-ruby/tree/2.20.2) (2024-08-28)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.1...2.20.2)
+
+
+**Merged Pull Requests**
+
+- Get external sub by uuid [#911](https://github.com/recurly/recurly-client-ruby/pull/911) ([amandamfielding](https://github.com/amandamfielding))
+
+
+
+## [2.20.1](https://github.com/recurly/recurly-client-ruby/tree/2.20.1) (2024-08-21)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.20.0...2.20.1)
+
+
+**Merged Pull Requests**
+
+- Added support for refunding invoices and line items [#909](https://github.com/recurly/recurly-client-ruby/pull/909) ([andcoca](https://github.com/andcoca))
+
+
+
+## [2.20.0](https://github.com/recurly/recurly-client-ruby/tree/2.20.0) (2024-07-03)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.14...2.20.0)
+
+
+**Merged Pull Requests**
+
+- GET external_subscription by external_id [#907](https://github.com/recurly/recurly-client-ruby/pull/907) ([paulorbpinho-fullstacklabs](https://github.com/paulorbpinho-fullstacklabs))
+- add taxable address sources to business entity and adjustment [#906](https://github.com/recurly/recurly-client-ruby/pull/906) ([amandamfielding](https://github.com/amandamfielding))
+
+
+
+## [2.19.14](https://github.com/recurly/recurly-client-ruby/tree/2.19.14) (2024-05-08)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.13...2.19.14)
+
+
+**Merged Pull Requests**
+
+- Add subscription change proflex options [#898](https://github.com/recurly/recurly-client-ruby/pull/898) ([Patrick-Duvall](https://github.com/Patrick-Duvall))
+
+
+
+## [2.19.13](https://github.com/recurly/recurly-client-ruby/tree/2.19.13) (2024-04-04)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.12...2.19.13)
+
+
+**Merged Pull Requests**
+
+- Add net_terms_type to Invoices, Purchases, and Subscriptions [#897](https://github.com/recurly/recurly-client-ruby/pull/897) ([flaviomuller](https://github.com/flaviomuller))
+
+
+
+## [2.19.12](https://github.com/recurly/recurly-client-ruby/tree/2.19.12) (2024-03-19)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.11...2.19.12)
+
+
+**Merged Pull Requests**
+
+- Add card_network_preference field to v2 [#896](https://github.com/recurly/recurly-client-ruby/pull/896) ([gilv93](https://github.com/gilv93))
+
+
+
+## [2.19.11](https://github.com/recurly/recurly-client-ruby/tree/2.19.11) (2024-03-13)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.10...2.19.11)
+
+
+**Merged Pull Requests**
+
+- add revrec to purchases and adjustments [#891](https://github.com/recurly/recurly-client-ruby/pull/891) ([wsethbrown](https://github.com/wsethbrown))
+- add revrec to gift cards [#889](https://github.com/recurly/recurly-client-ruby/pull/889) ([wsethbrown](https://github.com/wsethbrown))
+- add revrec to addons and items [#885](https://github.com/recurly/recurly-client-ruby/pull/885) ([wsethbrown](https://github.com/wsethbrown))
+- Add revrec shipping methods [#883](https://github.com/recurly/recurly-client-ruby/pull/883) ([wsethbrown](https://github.com/wsethbrown))
+- add plan setup fee revrec [#881](https://github.com/recurly/recurly-client-ruby/pull/881) ([wsethbrown](https://github.com/wsethbrown))
+- add get business entity [#880](https://github.com/recurly/recurly-client-ruby/pull/880) ([wsethbrown](https://github.com/wsethbrown))
+- Add pobs [#879](https://github.com/recurly/recurly-client-ruby/pull/879) ([wsethbrown](https://github.com/wsethbrown))
+- Add RevRec features to ruby [#878](https://github.com/recurly/recurly-client-ruby/pull/878) ([faiberrec](https://github.com/faiberrec))
+- Adding support for General Ledger Accounts [#875](https://github.com/recurly/recurly-client-ruby/pull/875) ([faiberrec](https://github.com/faiberrec))
+
+
+
+## [2.19.10](https://github.com/recurly/recurly-client-ruby/tree/2.19.10) (2023-12-06)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.9...2.19.10)
+
+
+**Merged Pull Requests**
+
+- External payment phases [#868](https://github.com/recurly/recurly-client-ruby/pull/868) ([amandamfielding](https://github.com/amandamfielding))
+
+
+
+## [2.19.9](https://github.com/recurly/recurly-client-ruby/tree/2.19.9) (2023-08-10)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.8...2.19.9)
+
+
+**Merged Pull Requests**
+
+- [V2] Add action_result to Subscription and Transaction [#863](https://github.com/recurly/recurly-client-ruby/pull/863) ([fkosouski](https://github.com/fkosouski))
+
+
+
+## [2.19.8](https://github.com/recurly/recurly-client-ruby/tree/2.19.8) (2023-07-27)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.7...2.19.8)
+
+
+**Merged Pull Requests**
+
+- Fixed usage of Minitest [#862](https://github.com/recurly/recurly-client-ruby/pull/862) ([csampson](https://github.com/csampson))
+- [V2] Add starting_on and ending_on to subscription ramps [#858](https://github.com/recurly/recurly-client-ruby/pull/858) ([rlew421](https://github.com/rlew421))
+
+
+
+## [2.19.7](https://github.com/recurly/recurly-client-ruby/tree/2.19.7) (2023-07-17)
+
+[Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.6...2.19.7)
+
+
+**Merged Pull Requests**
+
+- modify external subscription [#857](https://github.com/recurly/recurly-client-ruby/pull/857) ([amandamfielding](https://github.com/amandamfielding))
+
+
+
 ## [2.19.6](https://github.com/recurly/recurly-client-ruby/tree/2.19.6) (2023-06-13)
 
 [Full Changelog](https://github.com/recurly/recurly-client-ruby/compare/2.19.5...2.19.6)
@@ -989,7 +1153,7 @@
 - Fix AddOn quantity accumulator [#278](https://github.com/recurly/recurly-client-ruby/pull/278) ([bhelx](https://github.com/bhelx))
 - Add new dunning event notification [#277](https://github.com/recurly/recurly-client-ruby/pull/277) ([bhelx](https://github.com/bhelx))
 - Fix failing dependency for ruby 1.9.3 [#276](https://github.com/recurly/recurly-client-ruby/pull/276) ([bhelx](https://github.com/bhelx))
-- Correct rails deprecation warning [#275](https://github.com/recurly/recurly-client-ruby/pull/275) ([jdeseno](https://github.com/jdeseno))
+- Correct rails deprecation warning [#275](https://github.com/recurly/recurly-client-ruby/pull/275) ([ghost](https://github.com/ghost))
 - Fix redeem bang [#271](https://github.com/recurly/recurly-client-ruby/pull/271) ([sdhull](https://github.com/sdhull))
 - Cleanup code around message interpolation [#268](https://github.com/recurly/recurly-client-ruby/pull/268) ([bhelx](https://github.com/bhelx))
 - removes base from error messages [#267](https://github.com/recurly/recurly-client-ruby/pull/267) ([lmnleaf](https://github.com/lmnleaf))
@@ -1535,7 +1699,7 @@
 - Fix AddOn quantity accumulator [#278](https://github.com/recurly/recurly-client-ruby/pull/278) ([bhelx](https://github.com/bhelx))
 - Add new dunning event notification [#277](https://github.com/recurly/recurly-client-ruby/pull/277) ([bhelx](https://github.com/bhelx))
 - Fix failing dependency for ruby 1.9.3 [#276](https://github.com/recurly/recurly-client-ruby/pull/276) ([bhelx](https://github.com/bhelx))
-- Correct rails deprecation warning [#275](https://github.com/recurly/recurly-client-ruby/pull/275) ([jdeseno](https://github.com/jdeseno))
+- Correct rails deprecation warning [#275](https://github.com/recurly/recurly-client-ruby/pull/275) ([ghost](https://github.com/ghost))
 - Fix redeem bang [#271](https://github.com/recurly/recurly-client-ruby/pull/271) ([sdhull](https://github.com/sdhull))
 - Cleanup code around message interpolation [#268](https://github.com/recurly/recurly-client-ruby/pull/268) ([bhelx](https://github.com/bhelx))
 - removes base from error messages [#267](https://github.com/recurly/recurly-client-ruby/pull/267) ([lmnleaf](https://github.com/lmnleaf))
@@ -2153,7 +2317,7 @@
 - Fix AddOn quantity accumulator [#278](https://github.com/recurly/recurly-client-ruby/pull/278) ([bhelx](https://github.com/bhelx))
 - Add new dunning event notification [#277](https://github.com/recurly/recurly-client-ruby/pull/277) ([bhelx](https://github.com/bhelx))
 - Fix failing dependency for ruby 1.9.3 [#276](https://github.com/recurly/recurly-client-ruby/pull/276) ([bhelx](https://github.com/bhelx))
-- Correct rails deprecation warning [#275](https://github.com/recurly/recurly-client-ruby/pull/275) ([jdeseno](https://github.com/jdeseno))
+- Correct rails deprecation warning [#275](https://github.com/recurly/recurly-client-ruby/pull/275) ([ghost](https://github.com/ghost))
 - Fix redeem bang [#271](https://github.com/recurly/recurly-client-ruby/pull/271) ([sdhull](https://github.com/sdhull))
 - Cleanup code around message interpolation [#268](https://github.com/recurly/recurly-client-ruby/pull/268) ([bhelx](https://github.com/bhelx))
 - removes base from error messages [#267](https://github.com/recurly/recurly-client-ruby/pull/267) ([lmnleaf](https://github.com/lmnleaf))

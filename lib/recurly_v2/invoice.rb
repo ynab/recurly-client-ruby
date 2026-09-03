@@ -96,6 +96,7 @@ module RecurlyV2
       customer_notes
       address
       net_terms
+      net_terms_type
       collection_method
       tax_types
       refund_tax_date
@@ -122,6 +123,7 @@ module RecurlyV2
       refundable_total_in_cents
       used_tax_service
       business_entity_id
+      vertex_transaction_type
     )
     alias to_param invoice_number_with_prefix
 
@@ -248,6 +250,25 @@ module RecurlyV2
       )
     end
 
+    # Refunds the invoice for a specific percentage.
+    #
+    # @return [Invoice, false] Invoice if successful, false if the invoice isn't
+    # refundable.
+    # @raise [Error] If the refund fails.
+    # @param percentage [Integer, nil] The percentage to refund from the invoice.
+    # @param refund_method ["credit_first", "transaction_first", "all_transaction", "all_credit"] The method used to refund.
+    # @param external_refund [true, false] Designates that the refund transactions created are manual.
+    # @param credit_customer_notes [String] Adds notes to refund credit invoice.
+    # @param payment_method [String] Creates the manual transactions with this payment method. Allowed if *external_refund* is true.
+    # @param description [String] Sets this value as the *transaction_note* on the manual transactions created. Allowed if *external_refund* is true.
+    # @param refunded_at [DateTime] Sets this value as the *collected_at* on the manual transactions created. Allowed if *external_refund* is true.
+    def refund_percentage(percentage = nil, refund_method = 'credit_first', options = {})
+      return false unless link? :refund
+      self.class.from_response(
+        follow_link :refund, :body => refund_percentage_to_xml(percentage, refund_method, options)
+      )
+    end
+
     def xml_keys
       super - ['currency']
     end
@@ -284,6 +305,16 @@ module RecurlyV2
       builder.to_s
     end
 
+    def refund_percentage_to_xml(percentage = nil, refund_method = nil, options = {})
+      builder = XML.new("<invoice/>")
+      builder.add_element 'refund_method', refund_method
+      builder.add_element 'percentage', percentage
+      options.each do |k, v|
+        builder.add_element k.to_s, v
+      end
+      builder.to_s
+    end
+
     def refund_line_items_to_xml(line_items = nil, refund_method = nil, options = {})
       builder = XML.new("<invoice/>")
       builder.add_element 'refund_method', refund_method
@@ -295,8 +326,10 @@ module RecurlyV2
       line_items.each do |line_item|
         adj_node = node.add_element 'adjustment'
         adj_node.add_element 'uuid', line_item[:adjustment].uuid
-        adj_node.add_element 'quantity', line_item[:quantity]
+        adj_node.add_element 'quantity', line_item[:quantity] if line_item.key?(:quantity)
         adj_node.add_element('quantity_decimal', line_item[:quantity_decimal]) if line_item.key?(:quantity_decimal)
+        adj_node.add_element 'percentage', line_item[:percentage] if line_item.key?(:percentage)
+        adj_node.add_element 'amount_in_cents', line_item[:amount_in_cents] if line_item.key?(:amount_in_cents)
         adj_node.add_element 'prorate', line_item[:prorate]
       end
       builder.to_s

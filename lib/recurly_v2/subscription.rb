@@ -70,6 +70,7 @@ module RecurlyV2
       total_billing_cycles
       remaining_billing_cycles
       net_terms
+      net_terms_type
       collection_method
       po_number
       tax_in_cents
@@ -107,6 +108,8 @@ module RecurlyV2
       resume_at
       gateway_code
       transaction_type
+      action_result
+      proration_settings
     )
     alias to_param uuid
 

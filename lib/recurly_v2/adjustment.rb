@@ -55,6 +55,8 @@ module RecurlyV2
       tax_type
       tax_region
       tax_rate
+      origin_tax_address_source
+      destination_tax_address_source
       tax_exempt
       tax_inclusive
       tax_code
@@ -67,8 +69,9 @@ module RecurlyV2
       surcharge_in_cents
       avalara_transaction_type
       avalara_service_type
+      vertex_transaction_type
       refundable_total_in_cents
-    ]
+    ] + RevRec::ALL_ATTRIBUTES
     alias to_param uuid
 
     # @return ["charge", "credit", nil] The type of adjustment.
